@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_openapi_sandbox/ui/pages/home.dart';
+import 'package:flutter_openapi_sandbox/ui/theme/theme.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -8,9 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: AppTheme.light().data,
       home: const HomePage(title: 'Flutter Demo Home Page'),
     );
   }
