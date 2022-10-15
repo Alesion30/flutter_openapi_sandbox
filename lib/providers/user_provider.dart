@@ -8,3 +8,10 @@ final fetchUsersProvider = FutureProvider<List<User>>((ref) async {
   final response = await repository.getUsers();
   return response.data?.toList() ?? [];
 });
+
+final fetchUserProvider = FutureProvider.family<User, String>((ref, id) async {
+  final openapi = ref.read(openapiProvider);
+  final repository = openapi.getUsersApi();
+  final response = await repository.getUser(id: id);
+  return response.data!;
+});
