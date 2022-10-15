@@ -1,0 +1,53 @@
+get:
+  summary: すべてのユーザーを取得する
+  operationId: getUsers
+  tags:
+    - users
+  responses:
+    "200":
+      description: "Ok"
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "../schemas/user.yml#/user"
+    "401":
+      description: "Unauthorized"
+      content:
+        application/json:
+          schema:
+            $ref: "../components/schemas/responses.yml#/unauthorized"
+    "403":
+      description: "Forbidden"
+      content:
+        application/json:
+          schema:
+            $ref: "../components/schemas/responses.yml#/forbidden"
+    "404":
+      description: "Not Found"
+      content:
+        application/json:
+          schema:
+            $ref: "../components/schemas/responses.yml#/not_found"
+    "500":
+      description: "Internal Server Error"
+      content:
+        application/json:
+          schema:
+            $ref: "../components/schemas/responses.yml#/internal_server_error"
+
+post:
+  summary: 新しいユーザーを追加する
+  operationId: addUser
+  tags:
+    - users
+  requestBody:
+    description: ユーザー作成の引数
+    content:
+      application/json:
+        schema:
+          $ref: "../schemas/user.yml#/user"
+  responses:
+    "201":
+      description: CREATED
