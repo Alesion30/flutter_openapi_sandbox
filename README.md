@@ -27,7 +27,7 @@ opening swagger ui
 
 > http://localhost:8080
 
-## Generate By openapi-generator
+## Generate by openapi-generator
 
 generate domain model and api call interfaces for dart. Install openapi-generator from https://github.com/OpenAPITools/openapi-generator
 
