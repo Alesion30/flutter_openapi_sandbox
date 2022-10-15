@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'color_theme.dart';
 import 'text_theme.dart';
+
+final themeProvider = Provider<AppTheme>((ref) => AppTheme.light());
 
 class AppTheme {
   factory AppTheme.light() {
