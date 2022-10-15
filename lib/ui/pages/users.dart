@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_openapi_sandbox/providers/user_provider.dart';
+import 'package:flutter_openapi_sandbox/ui/hooks/use_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:openapi/openapi.dart';
 
-class HomePage extends HookConsumerWidget {
-  const HomePage({super.key});
+class UsersPage extends HookConsumerWidget {
+  const UsersPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final router = useRouter();
     final users = ref.watch(fetchUsersProvider);
 
     return Scaffold(
@@ -24,6 +26,7 @@ class HomePage extends HookConsumerWidget {
                 itemBuilder: (context, index) {
                   final user = users[index];
                   return ListTile(
+                    onTap: () => router.push('/user/${user.id}'),
                     leading: user.gender == UserGenderEnum.man
                         ? const Icon(Icons.man)
                         : const Icon(Icons.woman),
