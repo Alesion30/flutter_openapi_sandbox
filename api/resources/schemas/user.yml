@@ -1,6 +1,7 @@
 user:
   type: object
   required:
+    - id
     - name
     - email
     - gender
@@ -8,6 +9,10 @@ user:
     - familyCount
     - createdAt
   properties:
+    id:
+      type: string
+      example: xxx
+      description: ユーザーのID
     name:
       type: string
       example: 山田 太郎

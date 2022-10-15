@@ -88,8 +88,13 @@ components:
         gender: man
         name: 山田 太郎
         familyCount: 1
+        id: xxx
         email: test@test.com
       properties:
+        id:
+          description: ユーザーのID
+          example: xxx
+          type: string
         name:
           description: ユーザーのフルネーム
           example: 山田 太郎
@@ -124,6 +129,7 @@ components:
       - email
       - familyCount
       - gender
+      - id
       - name
       - paymentPrice
       type: object

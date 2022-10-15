@@ -8,6 +8,7 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **String** | ユーザーのID | 
 **name** | **String** | ユーザーのフルネーム | 
 **email** | **String** | ユーザーのメールアドレス | 
 **gender** | **String** | 性別 | 

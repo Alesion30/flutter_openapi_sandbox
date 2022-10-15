@@ -12,6 +12,7 @@ part 'user.g.dart';
 /// User
 ///
 /// Properties:
+/// * [id] - ユーザーのID
 /// * [name] - ユーザーのフルネーム
 /// * [email] - ユーザーのメールアドレス
 /// * [gender] - 性別
@@ -20,6 +21,10 @@ part 'user.g.dart';
 /// * [createdAt] - 作成日
 @BuiltValue()
 abstract class User implements Built<User, UserBuilder> {
+  /// ユーザーのID
+  @BuiltValueField(wireName: r'id')
+  String get id;
+
   /// ユーザーのフルネーム
   @BuiltValueField(wireName: r'name')
   String get name;
@@ -68,6 +73,11 @@ class _$UserSerializer implements PrimitiveSerializer<User> {
     User object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
     yield r'name';
     yield serializers.serialize(
       object.name,
@@ -123,6 +133,13 @@ class _$UserSerializer implements PrimitiveSerializer<User> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.id = valueDes;
+          break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,

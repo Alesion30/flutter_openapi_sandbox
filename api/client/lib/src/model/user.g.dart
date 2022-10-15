@@ -59,6 +59,8 @@ class _$UserGenderEnumSerializer
 
 class _$User extends User {
   @override
+  final String id;
+  @override
   final String name;
   @override
   final String email;
@@ -75,13 +77,15 @@ class _$User extends User {
       (new UserBuilder()..update(updates))._build();
 
   _$User._(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.email,
       required this.gender,
       this.address,
       required this.familyCount,
       required this.createdAt})
       : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, r'User', 'id');
     BuiltValueNullFieldError.checkNotNull(name, r'User', 'name');
     BuiltValueNullFieldError.checkNotNull(email, r'User', 'email');
     BuiltValueNullFieldError.checkNotNull(gender, r'User', 'gender');
@@ -100,6 +104,7 @@ class _$User extends User {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is User &&
+        id == other.id &&
         name == other.name &&
         email == other.email &&
         gender == other.gender &&
@@ -113,7 +118,9 @@ class _$User extends User {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, name.hashCode), email.hashCode),
+                $jc(
+                    $jc($jc($jc(0, id.hashCode), name.hashCode),
+                        email.hashCode),
                     gender.hashCode),
                 address.hashCode),
             familyCount.hashCode),
@@ -123,6 +130,7 @@ class _$User extends User {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'User')
+          ..add('id', id)
           ..add('name', name)
           ..add('email', email)
           ..add('gender', gender)
@@ -135,6 +143,10 @@ class _$User extends User {
 
 class UserBuilder implements Builder<User, UserBuilder> {
   _$User? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
   String? _name;
   String? get name => _$this._name;
@@ -167,6 +179,7 @@ class UserBuilder implements Builder<User, UserBuilder> {
   UserBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _id = $v.id;
       _name = $v.name;
       _email = $v.email;
       _gender = $v.gender;
@@ -195,6 +208,7 @@ class UserBuilder implements Builder<User, UserBuilder> {
   _$User _build() {
     final _$result = _$v ??
         new _$User._(
+            id: BuiltValueNullFieldError.checkNotNull(id, r'User', 'id'),
             name: BuiltValueNullFieldError.checkNotNull(name, r'User', 'name'),
             email:
                 BuiltValueNullFieldError.checkNotNull(email, r'User', 'email'),
