@@ -4,8 +4,8 @@ services:
     image: swaggerapi/swagger-ui
     container_name: swagger-ui
     volumes:
-      - ./openapi.yml:/usr/share/nginx/html/openapi.yml
-      - ./resources:/usr/share/nginx/html/resources
+      - ./api/openapi.yml:/usr/share/nginx/html/openapi.yml
+      - ./api/resources:/usr/share/nginx/html/resources
     environment:
       API_URL: openapi.yml
     ports:
@@ -17,10 +17,5 @@ services:
       - "8082:4010"
     command: mock -d -h 0.0.0.0 /openapi.yml
     volumes:
-      - ./openapi.yml:/openapi.yml
-      - ./resources:/resources
-  openapi-generator:
-    image: openapitools/openapi-generator-cli
-    container_name: openapi-generator
-    volumes:
-      - ./:/workspace
+      - ./api/openapi.yml:/openapi.yml
+      - ./api/resources:/resources
