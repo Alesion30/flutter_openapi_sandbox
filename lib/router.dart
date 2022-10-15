@@ -12,7 +12,7 @@ final routerProvider = Provider((ref) {
         builder: (context, state) => const UsersPage(),
       ),
       GoRoute(
-        path: '/user/:id',
+        path: '/users/:id',
         builder: (context, state) {
           final id = state.params['id']!;
           return UserPage(id);

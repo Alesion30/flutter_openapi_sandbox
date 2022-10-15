@@ -26,7 +26,7 @@ class UsersPage extends HookConsumerWidget {
                 itemBuilder: (context, index) {
                   final user = users[index];
                   return ListTile(
-                    onTap: () => router.push('/user/${user.id}'),
+                    onTap: () => router.push('/users/${user.id}'),
                     leading: user.gender == UserGenderEnum.man
                         ? const Icon(Icons.man)
                         : const Icon(Icons.woman),
