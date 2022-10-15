@@ -14,26 +14,29 @@ class HomePage extends HookConsumerWidget {
       appBar: AppBar(
         title: const Text('Flutter openapi sandbox'),
       ),
-      body: Builder(
-        builder: (context) {
-          return users.when(
-            data: (users) => ListView.builder(
-              itemCount: users.length,
-              itemBuilder: (context, index) {
-                final user = users[index];
-                return ListTile(
-                  leading: user.gender == UserGenderEnum.man
-                      ? const Icon(Icons.man)
-                      : const Icon(Icons.woman),
-                  title: Text(user.name),
-                  subtitle: Text(user.email),
-                );
-              },
-            ),
-            error: (_, __) => const Text('Error'),
-            loading: () => const Text('Loading...'),
-          );
-        },
+      body: RefreshIndicator(
+        onRefresh: () => ref.refresh(fetchUsersProvider.future),
+        child: Builder(
+          builder: (context) {
+            return users.when(
+              data: (users) => ListView.builder(
+                itemCount: users.length,
+                itemBuilder: (context, index) {
+                  final user = users[index];
+                  return ListTile(
+                    leading: user.gender == UserGenderEnum.man
+                        ? const Icon(Icons.man)
+                        : const Icon(Icons.woman),
+                    title: Text(user.name),
+                    subtitle: Text(user.email),
+                  );
+                },
+              ),
+              error: (_, __) => const Text('Error'),
+              loading: () => const Text('Loading...'),
+            );
+          },
+        ),
       ),
     );
   }
