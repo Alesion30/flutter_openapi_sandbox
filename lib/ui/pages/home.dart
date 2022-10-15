@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:openapi/openapi.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({
-    super.key,
-    required this.title,
-  });
-  final String title;
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    void getUsers() async {
+    void fetchUsers() async {
       final api = Openapi(
         basePathOverride: 'http://localhost:8082',
       );
@@ -21,14 +17,14 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: const Text('Flutter openapi sandbox'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: getUsers,
+              onPressed: fetchUsers,
               child: const Text('fetch users'),
             )
           ],
